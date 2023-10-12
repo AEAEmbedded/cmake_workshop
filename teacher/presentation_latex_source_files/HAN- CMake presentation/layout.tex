@@ -1,0 +1,44 @@
+\usepackage{tikz}
+\usetikzlibrary{
+    calc,
+    shapes.misc,
+    shapes.geometric,
+    arrows, 
+    arrows.meta, 
+    fit, 
+    positioning, 
+    shapes.symbols, 
+    chains, 
+    mindmap,
+    decorations.pathmorphing,
+    decorations.markings,
+    patterns,
+    backgrounds,
+    intersections,  
+}
+\usecolortheme{beaver}
+\definecolor{backgroundColor}{HTML}{e50056}
+\definecolor{bannerColor}{HTML}{1B262C}
+\def\bannerOpacity{0.9}
+\def\bannerWidth{0.8}
+\def\bannerPadding{60pt}  
+\def\bannerTopMargin{0cm}  
+
+\tikzstyle {banner} = [
+    below = \bannerTopMargin,
+    fill=bannerColor,
+    minimum width={\paperwidth},
+    inner ysep = \bannerPadding,
+    opacity = \bannerOpacity,
+    text opacity = 1.0
+]
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \centering{
+  \textcolor{white}{\usebeamerfont{title}\inserttitle}\par
+  \bigskip
+  \textcolor{white}{\usebeamerfont{subtitle}\insertsubtitle}\par
+  \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+  }
+}

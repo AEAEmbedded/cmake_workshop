@@ -1,0 +1,1 @@
+add_subdirectory(cmake_workshop_mqtt_lib_w_cmake)
