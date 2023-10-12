@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.12)
 
 # Pull in SDK (must be before project)
 include(pico_sdk_import.cmake)
+# Include any extra cmake module here
 
 project(cmake_workshop C CXX ASM)
 set(CMAKE_C_STANDARD 11)
@@ -25,24 +26,27 @@ if (PICO_CYW43_SUPPORTED) # set by BOARD=pico-w
         message("Skipping build as support is not available")
     else ()
         # Include the library from the GitHub first!
-        # See the lib/CMakeLists.txt
-        # 
-        # Tip! Use the Fetchcontent module of CMake
+        #
+        # The github repo is: https://github.com/HANEmbedded/cmake_workshop_library.git
+        #
+        # Tip! Use the Fetchcontent module of CMake or download the repo in a subfolder
+        # However when asked at end of workshop, there should be a valid reason to choose one over the other.
 
-        
+
         # Add main executable, 
         # determine the location of main source file first!
- 
-        # enable usb output, disable uart output
-        pico_enable_stdio_usb(pico_mqtt_client 1)
-        pico_enable_stdio_uart(pico_mqtt_client 0)
-
-		# Add the include directories for main executable!
+        # Then look at: https://cmake.org/cmake/help/latest/command/add_executable.html
         
-		# Link the main executable with the rpi_pico_mqtt library
 
-        pico_add_extra_outputs(pico_mqtt_client)
-
-
+        # enable usb output, disable uart output
+        pico_enable_stdio_usb(cmake_workshop_main 1)
+        pico_enable_stdio_uart(cmake_workshop_main 0)
+	
+	    # Link the main executable with the cmake_workshop_library library
+        # Take a look at the cmake_workshop_library repo get the library name from the CMakeLists.txt
+        # Then look at: https://cmake.org/cmake/help/latest/command/target_link_libraries.html
+        
+        # Add extra output files to the main executable
+        pico_add_extra_outputs(cmake_workshop_main)
     endif ()
 endif()

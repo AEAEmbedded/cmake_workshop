@@ -1,1 +1,0 @@
-add_subdirectory(cmake_workshop_library)
