@@ -15,12 +15,15 @@ endif ()
 # Initialize the SDK
 pico_sdk_init()
 
+# Compile options, add your compile flags here!
 add_compile_options(-Wall
         -Wno-format          # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
         -Wno-unused-function # we have some for the docs that aren't called
         -Wno-maybe-uninitialized
 )
 
+
+# Check if pico w is defined as build target device and not the pico
 if (PICO_CYW43_SUPPORTED) # set by BOARD=pico-w
     if (NOT TARGET pico_cyw43_arch)
         message("Skipping build as support is not available")
@@ -31,6 +34,8 @@ if (PICO_CYW43_SUPPORTED) # set by BOARD=pico-w
         #
         # Tip! Use the Fetchcontent module of CMake or download the repo in a subfolder
         # However when asked at end of workshop, there should be a valid reason to choose one over the other.
+        #
+        # Fetchcontent documentation: https://cmake.org/cmake/help/latest/module/FetchContent.html
 
 
         # Add main executable, 
